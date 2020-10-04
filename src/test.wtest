@@ -1,0 +1,27 @@
+import pedidos.*
+import rodados.*
+import dependencia.*
+test "testX" {
+
+	assert.that(true)
+
+}
+test "asd"{
+	
+	const pedido = new Pedido(distanciaARecorrer = 350,tiempoMaximo = 7,cantidadDePasajerosALlevar = 2,conjuntoColoresIncompatibles = #{azul,negro} )
+	const pedido2 = new Pedido(distanciaARecorrer = 350,tiempoMaximo = 5,cantidadDePasajerosALlevar = 4,conjuntoColoresIncompatibles = #{rojo,negro} )
+	
+	const corsita = new ChevroletCorsa(color = rojo)
+	const corsita2 = new ChevroletCorsa(color = negro)
+
+	const deportes = new Dependencia(cantidadEmpleados = 5)
+	
+	deportes.agregarAFlota(corsita)
+	deportes.agregarAFlota(corsita2)
+	deportes.agregarPedido(pedido)
+	deportes.agregarPedido(pedido2)
+	
+	assert.that(pedido2.colorNoEsCompatible(rojo))
+	assert.equals([pedido,pedido2],deportes.pedidosInsatisfechos())
+
+}
