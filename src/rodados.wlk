@@ -3,7 +3,7 @@ import wollok.game.*
 class ChevroletCorsa {
 
 	var property color
-	var posicion = game.origin()
+	var position = game.origin()
 	var posicionesPorDondePasoElCorsa = []
 
 	
@@ -20,20 +20,20 @@ class ChevroletCorsa {
 	}
 
 	method posicion() {
-		return posicion
+		return position
 	}
 
 	method nuevaPosicion(a, b) {
-		posicion = game.at(a, b)
+		position = game.at(a, b)
 		posicionesPorDondePasoElCorsa.add(new Position(x = a, y = b))
 	}
 
 	method coordenadaX() {
-		return posicion.x()
+		return position.x()
 	}
 
 	method coordenadaY() {
-		return posicion.y()
+		return position.y()
 	}
 
 	method posicionesPorDondePasoElCorsa() {
