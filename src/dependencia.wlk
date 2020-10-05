@@ -31,13 +31,14 @@ class Dependencia {
 	}
 
 	method capacidadFaltante() {
-		return (self.cantidadEmpleados() - flota.sum({ c => c.capacidadPasajeros() })).max(0)
+		return (self.cantidadEmpleados() - flota.sum({ c => c.capacidadPasajero() })).max(0)
 	}
 
 	method esGrande() {
 		return self.cantidadEmpleados() >= 40 and flota.count() >= 5
 	}
 
+	//etapa 3
 	method agregarPedido(pedido) {
 		pedidos.add(pedido)
 	}

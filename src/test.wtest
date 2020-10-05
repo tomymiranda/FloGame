@@ -1,12 +1,15 @@
 import pedidos.*
 import rodados.*
 import dependencia.*
+import rodados.*
+import rodados.*
+import rodados.*
 test "testX" {
 
 	assert.that(true)
 
 }
-test "asd"{
+test "test rapido mio"{
 	
 	const pedido = new Pedido(distanciaARecorrer = 350,tiempoMaximo = 7,cantidadDePasajerosALlevar = 2,conjuntoColoresIncompatibles = #{azul,negro} )
 	const pedido2 = new Pedido(distanciaARecorrer = 350,tiempoMaximo = 5,cantidadDePasajerosALlevar = 4,conjuntoColoresIncompatibles = #{rojo,negro} )
@@ -23,5 +26,42 @@ test "asd"{
 	
 	assert.that(pedido2.colorNoEsCompatible(rojo))
 	assert.equals([pedido,pedido2],deportes.pedidosInsatisfechos())
+
+}
+
+test "con dos dependencias cumple con lo pedido"{
+	
+	const deportes = new Dependencia(cantidadEmpleados = 45)
+	const cultura = new Dependencia(cantidadEmpleados = 31)
+	
+	const cachito = new ChevroletCorsa(color = rojo)
+	const corsita = new ChevroletCorsa(color = azul)
+	const corsita2 = new ChevroletCorsa(color = verde)
+	
+	const kwind = new RenaultKwid(tanqueAdicional = true)
+	const kwind2 = new RenaultKwid(tanqueAdicional = true)
+	const kwind3 = new RenaultKwid(tanqueAdicional = false)
+	const kwind4 = new RenaultKwid(tanqueAdicional = true)
+	
+	const max5 = new AutoEspecial(capacidadPasajero = 5,velocidadMaxima =160,peso=1200,color = beige)
+
+	 trafic.interiorDeTrafic(interiorPopular)
+	 trafic.motor(motorBataton)
+
+	deportes.agregarAFlota(cachito)
+	deportes.agregarAFlota(corsita2)
+	deportes.agregarAFlota(corsita2)
+	deportes.agregarAFlota(kwind)
+	deportes.agregarAFlota(max5)
+
+	cultura.agregarAFlota(cachito)
+	cultura.agregarAFlota(kwind2)
+	cultura.agregarAFlota(kwind3)
+	cultura.agregarAFlota(kwind4)
+	cultura.agregarAFlota(trafic)
+	
+	
+	assert.equals(25,deportes.capacidadFaltante())
+	assert.equals(5,cultura.capacidadFaltante())
 
 }

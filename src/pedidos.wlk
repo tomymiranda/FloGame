@@ -1,6 +1,7 @@
 import rodados.*
 class Pedido {
 	
+	//etapa 2
 	var property distanciaARecorrer
 	var property tiempoMaximo
 	var property cantidadDePasajerosALlevar

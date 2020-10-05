@@ -17,10 +17,10 @@ class RenaultKwid {
 }
 
 object trafic{
-	var property interiorDeTrafic = null
-	var property motor = null
+	var property interiorDeTrafic 
+	var property motor
 	
-	method capacidaPasajero(){return self.interiorDeTrafic().capacidad()}
+	method capacidadPasajero(){return self.interiorDeTrafic().capacidad()}
 	method velocidadMaxima(){return self.motor().velocidad()}
 	method peso(){return 4000 + self.interiorDeTrafic().peso() + self.motor().peso()}
 	method color(){return blanco}
@@ -57,3 +57,5 @@ object rojo{}
 object azul{}
 object blanco{}
 object negro{}
+object verde{}
+object beige{}
