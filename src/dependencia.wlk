@@ -19,7 +19,7 @@ class Dependencia {
 	}
 
 	method estaBienEquipada() {
-		return flota.count() >= 3 and flota.all({ c => c.velocidadMaxima() >= 100 })
+		return flota.size() >= 3 and flota.all({ c => c.velocidadMaxima() >= 100 })
 	}
 
 	method capacidadTotalEnColor(color) {
@@ -35,7 +35,7 @@ class Dependencia {
 	}
 
 	method esGrande() {
-		return self.cantidadEmpleados() >= 40 and flota.count() >= 5
+		return self.cantidadEmpleados() >= 40 and flota.size() >= 5
 	}
 
 	//etapa 3
