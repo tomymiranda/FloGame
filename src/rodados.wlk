@@ -6,6 +6,14 @@ class ChevroletCorsa {
 	var position = game.origin()
 	var posicionesPorDondePasoElCorsa = []
 
+	method moverALaDerecha(){self.nuevaPosicion(position.x()+1,position.y())}
+	method moverALaIzquierda(){self.nuevaPosicion(position.x()-1,position.y())}
+	method moverArriba(){self.nuevaPosicion(position.x(),position.y()+1)}
+	method moverAbajo(){self.nuevaPosicion(position.x(),position.y()-1)}
+	
+	method image(){
+		return color.image()
+	}
 	
 	method capacidadPasajero() {
 		return 4
@@ -19,10 +27,11 @@ class ChevroletCorsa {
 		return 1300
 	}
 
-	method posicion() {
+	method position() {
 		return position
 	}
 
+	// no sabia como pasar una posicion sin plantear como x e y
 	method nuevaPosicion(a, b) {
 		position = game.at(a, b)
 		posicionesPorDondePasoElCorsa.add(new Position(x = a, y = b))
@@ -171,11 +180,11 @@ object motorBataton {
 }
 
 object rojo {
-
+	method image(){return "autitorojo.png"}
 }
 
 object azul {
-
+	method image(){return "autitoazul.jpg"}
 }
 
 object blanco {
@@ -187,7 +196,7 @@ object negro {
 }
 
 object verde {
-
+	method image(){return "autitoverde.jpg"}
 }
 
 object beige {

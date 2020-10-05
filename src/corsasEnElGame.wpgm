@@ -1,7 +1,29 @@
 import wollok.game.*
+import rodados.*
 
 program corsasEnElGame {
 	// hacer las inicializaciones necesarias 
+	
+	game.title("corsa cambia de color")
+	
+	const corsa = new ChevroletCorsa(color = rojo)
+	
+	
+	game.height(10)
+	game.width(10)
+	
+	game.addVisual(corsa)
+	
+	keyboard.right().onPressDo{corsa.moverALaDerecha()}
+	keyboard.up().onPressDo{corsa.moverArriba()}
+	keyboard.down().onPressDo{corsa.moverAbajo()}
+	keyboard.left().onPressDo{corsa.moverALaIzquierda()}	
+	
+	
+	keyboard.r().onPressDo{corsa.color(rojo)}
+	keyboard.a().onPressDo{corsa.color(azul)}
+	keyboard.v().onPressDo{corsa.color(verde)}
+	
 	
 	game.start()
 }
