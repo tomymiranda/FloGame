@@ -62,5 +62,13 @@ class Dependencia {
 	method colorIncompatible(color){
 		return pedidos.all({c => c.colorNoEsCompatible(color)})
 	}
+
+	method relajarTodosLosPedidos(){
+		pedidos.each({c => c.relajar()})
+	}
+
+	method acelerarTodosLosPedidos(){
+		pedidos.each({c => c.acelerar()})
+	}
 }
 

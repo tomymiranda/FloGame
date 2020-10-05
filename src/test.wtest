@@ -4,6 +4,7 @@ import dependencia.*
 import rodados.*
 import rodados.*
 import rodados.*
+import wollok.game.*
 
 test "el pedido2 no es compatible con el color rojo" {
 	const pedido = new Pedido(distanciaARecorrer = 350, tiempoMaximo = 7, cantidadDePasajerosALlevar = 2, conjuntoColoresIncompatibles = #{ azul, negro })
@@ -107,8 +108,7 @@ test "el peso total de la flota deportes es " {
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-	
-	assert.equals(6450,deportes.pesoTotalFlota())
+	assert.equals(6450, deportes.pesoTotalFlota())
 }
 
 test "el peso de total de la flota cultura es" {
@@ -134,8 +134,7 @@ test "el peso de total de la flota cultura es" {
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-	
-	assert.equals(10700,cultura.pesoTotalFlota())
+	assert.equals(10700, cultura.pesoTotalFlota())
 }
 
 test "la flota deportes esta equipada" {
@@ -161,7 +160,6 @@ test "la flota deportes esta equipada" {
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-	
 	assert.that(deportes.estaBienEquipada())
 }
 
@@ -188,7 +186,6 @@ test "la flota cultura esta equipada" {
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-
 	assert.notThat(cultura.estaBienEquipada())
 }
 
@@ -215,8 +212,7 @@ test "la capacidad total en color azul de la flota deporte es de 3 " {
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-
-	assert.equals(3,deportes.capacidadTotalEnColor(azul))
+	assert.equals(3, deportes.capacidadTotalEnColor(azul))
 }
 
 test "la capacidad total en color azul de la flota cultura es de 10" {
@@ -242,11 +238,10 @@ test "la capacidad total en color azul de la flota cultura es de 10" {
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-	
-	assert.equals(10,cultura.capacidadTotalEnColor(azul))
+	assert.equals(10, cultura.capacidadTotalEnColor(azul))
 }
 
-test "la flota deportes es grande"{
+test "la flota deportes es grande" {
 	const deportes = new Dependencia(cantidadEmpleados = 45)
 	const cultura = new Dependencia(cantidadEmpleados = 31)
 	const cachito = new ChevroletCorsa(color = rojo)
@@ -269,11 +264,10 @@ test "la flota deportes es grande"{
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-
 	assert.that(deportes.esGrande())
 }
 
-test "la flota cultura no es grande"{
+test "la flota cultura no es grande" {
 	const deportes = new Dependencia(cantidadEmpleados = 45)
 	const cultura = new Dependencia(cantidadEmpleados = 31)
 	const cachito = new ChevroletCorsa(color = rojo)
@@ -296,7 +290,58 @@ test "la flota cultura no es grande"{
 	cultura.agregarAFlota(kwind3)
 	cultura.agregarAFlota(kwind4)
 	cultura.agregarAFlota(trafic)
-	
 	assert.notThat(cultura.esGrande())
 }
 
+test "cachito paso por la posicion 5,5" {
+	const cachito = new ChevroletCorsa(color = rojo)
+	cachito.nuevaPosicion(4, 2)
+	cachito.nuevaPosicion(5, 5)
+	cachito.nuevaPosicion(2, 7)
+	const p = new Position(x = 5, y = 5)
+	assert.that(cachito.pasoPor(p))
+}
+
+test "cachito paso por la fila 3" {
+	const cachito = new ChevroletCorsa(color = rojo)
+	cachito.nuevaPosicion(3, 5)
+	cachito.nuevaPosicion(3, 6)
+	cachito.nuevaPosicion(3, 7)
+	cachito.nuevaPosicion(4, 7)
+	assert.that(cachito.pasoPorFila(3))
+}
+
+test "cachito paso por la fila 4" {
+	const cachito = new ChevroletCorsa(color = rojo)
+	cachito.nuevaPosicion(3, 5)
+	cachito.nuevaPosicion(3, 6)
+	cachito.nuevaPosicion(3, 7)
+	cachito.nuevaPosicion(4, 7)
+	assert.that(cachito.pasoPorFila(4))
+}
+/* 
+test "cachito paso por las filas 3, 4 y 5" {
+	const cachito = new ChevroletCorsa(color = rojo)
+	cachito.nuevaPosicion(3, 7)
+	cachito.nuevaPosicion(4, 7)
+	cachito.nuevaPosicion(5, 5)
+	assert.that(cachito.recorrioFilas([ 3, 4, 5 ]))
+}
+*/
+test "cachito puede satisfacer pedido de 960 kms con tiempo máximo de 8 horas y para 4 pasajeros donde los colores incompatibles son azul y negro" {
+	const cachito = new ChevroletCorsa(color = rojo)
+	const pedido = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 8, cantidadDePasajerosALlevar = 4, conjuntoColoresIncompatibles = #{ azul, negro })
+	assert.that(pedido.elAutoPuedeSatisfacerPedido(cachito))
+}
+
+test"cachito no puede satisfacer pedido de 960 kms con tiempo máximo de 8 horas y para 4 pasajeros donde los colores incompatibles son rojo y negro" {
+	const cachito = new ChevroletCorsa(color = rojo)
+	const pedido = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 8, cantidadDePasajerosALlevar = 4, conjuntoColoresIncompatibles = #{ rojo, negro })
+	assert.notThat(pedido.elAutoPuedeSatisfacerPedido(cachito))
+}
+
+test "cachito no puede satisfacer el pedido de 6 horas" {
+	const cachito = new ChevroletCorsa(color = rojo)
+	const pedido = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 6, cantidadDePasajerosALlevar = 4, conjuntoColoresIncompatibles = #{ azul, negro })
+	assert.notThat(pedido.elAutoPuedeSatisfacerPedido(cachito))
+}

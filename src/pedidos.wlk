@@ -12,7 +12,7 @@ class Pedido {
 	}
 	
 	method elAutoPuedeSatisfacerPedido(autito){
-		return autito.velocidadMaxima() >= 10 and autito.capacidadPasajero() >= self.cantidadDePasajerosALlevar() and not self.conjuntoColoresIncompatibles().contains(autito.color())
+		return autito.velocidadMaxima()-10 >= self.velocidadRequerida()  and autito.capacidadPasajero() >= self.cantidadDePasajerosALlevar() and not self.conjuntoColoresIncompatibles().contains(autito.color())
 	}
 	
 	method colorNoEsCompatible(colorsito){
