@@ -57,8 +57,9 @@ class ChevroletCorsa {
 		return posicionesPorDondePasoElCorsa.map({ c => c.x() }).contains(numero)
 	}
 
+	// no me salio usando el self.pasoPorFila o si se podia no supe hacerlo
 	method recorrioFilas(lista_de_numeros) {
-		
+		return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet().intersection(lista_de_numeros.asSet()) == lista_de_numeros.asSet()   
 		//return self.pasoPorFila({=>lista_de_numeros})
 		//return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet() == (lista_de_numeros.asSet()) 
 	}

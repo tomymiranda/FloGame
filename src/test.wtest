@@ -319,7 +319,7 @@ test "cachito paso por la fila 4" {
 	cachito.nuevaPosicion(4, 7)
 	assert.that(cachito.pasoPorFila(4))
 }
-/* 
+
 test "cachito paso por las filas 3, 4 y 5" {
 	const cachito = new ChevroletCorsa(color = rojo)
 	cachito.nuevaPosicion(3, 7)
@@ -327,7 +327,27 @@ test "cachito paso por las filas 3, 4 y 5" {
 	cachito.nuevaPosicion(5, 5)
 	assert.that(cachito.recorrioFilas([ 3, 4, 5 ]))
 }
-*/
+
+test "tira false porq cachito no paso por la fila 4"{
+	const cachito = new ChevroletCorsa(color = rojo)
+	cachito.nuevaPosicion(3, 7)
+	
+	cachito.nuevaPosicion(5, 5)
+	assert.notThat(cachito.recorrioFilas([ 3, 4, 5 ]))
+}
+
+test "pasa por todas por mas que pase por otras filas"{
+	const cachito = new ChevroletCorsa(color = rojo)
+	cachito.nuevaPosicion(3, 5)
+	cachito.nuevaPosicion(3, 6)
+	cachito.nuevaPosicion(3, 7)
+	cachito.nuevaPosicion(4, 7)
+	cachito.nuevaPosicion(5, 5)
+	cachito.nuevaPosicion(6, 4)
+	
+	assert.that(cachito.recorrioFilas([ 3, 4, 5 ]))
+}
+
 test "cachito puede satisfacer pedido de 960 kms con tiempo máximo de 8 horas y para 4 pasajeros donde los colores incompatibles son azul y negro" {
 	const cachito = new ChevroletCorsa(color = rojo)
 	const pedido = new Pedido(distanciaARecorrer = 960, tiempoMaximo = 8, cantidadDePasajerosALlevar = 4, conjuntoColoresIncompatibles = #{ azul, negro })

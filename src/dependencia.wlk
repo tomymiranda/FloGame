@@ -64,11 +64,11 @@ class Dependencia {
 	}
 
 	method relajarTodosLosPedidos(){
-		pedidos.each({c => c.relajar()})
+		pedidos.forEach({c => c.relajar()})
 	}
 
 	method acelerarTodosLosPedidos(){
-		pedidos.each({c => c.acelerar()})
+		pedidos.forEach({c => c.acelerar()})
 	}
 }
 
