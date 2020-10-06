@@ -180,11 +180,11 @@ object motorBataton {
 }
 
 object rojo {
-	method image(){return "autitorojo.png"}
+	method image(){return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitorojo.png"}
 }
 
 object azul {
-	method image(){return "autitoazul.jpg"}
+	method image(){return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitoazul.jpg"}
 }
 
 object blanco {
@@ -196,7 +196,7 @@ object negro {
 }
 
 object verde {
-	method image(){return "autitoverde.jpg"}
+	method image(){return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitoverde.jpg"}
 }
 
 object beige {
