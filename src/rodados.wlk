@@ -1,4 +1,5 @@
 import wollok.game.*
+import pared.*
 
 class ChevroletCorsa {
 
@@ -6,6 +7,11 @@ class ChevroletCorsa {
 	var position = game.origin()
 	var posicionesPorDondePasoElCorsa = []
 
+	// getObjectsIn(position) para devolver un objeto en una posicion
+	/* 
+	 * posible solucion para la pared : poner un mentodo que verifique si hay pared y despues modificar los metodos mover
+	 */
+	
 	method moverALaDerecha(){self.nuevaPosicion(position.x()+1,position.y())}
 	method moverALaIzquierda(){self.nuevaPosicion(position.x()-1,position.y())}
 	method moverArriba(){self.nuevaPosicion(position.x(),position.y()+1)}

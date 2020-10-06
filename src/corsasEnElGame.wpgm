@@ -7,18 +7,39 @@ program corsasEnElGame {
 	game.title("corsa cambia de color")
 	
 	const corsa = new ChevroletCorsa(color = rojo)
+	const corsa2 = new ChevroletCorsa(color = azul)
+	const corsa3 = new ChevroletCorsa(color = verde)
+	
+	var autitoActivo = corsa
 	
 	
 	game.height(10)
 	game.width(10)
 	
 	game.addVisual(corsa)
+	game.addVisual(corsa2)
+	game.addVisual(corsa3)
 	
-	keyboard.right().onPressDo{corsa.moverALaDerecha()}
-	keyboard.up().onPressDo{corsa.moverArriba()}
-	keyboard.down().onPressDo{corsa.moverAbajo()}
-	keyboard.left().onPressDo{corsa.moverALaIzquierda()}	
 	
+	
+	keyboard.num1().onPressDo{autitoActivo = corsa}
+	keyboard.num2().onPressDo{autitoActivo = corsa2}
+	keyboard.num3().onPressDo{autitoActivo = corsa3}
+	
+	keyboard.right().onPressDo{autitoActivo.moverALaDerecha()}
+	keyboard.up().onPressDo{autitoActivo.moverArriba()}
+	keyboard.down().onPressDo{autitoActivo.moverAbajo()}
+	keyboard.left().onPressDo{autitoActivo.moverALaIzquierda()}	
+	
+	keyboard.h().onPressDo{corsa2.moverALaDerecha()}
+	keyboard.t().onPressDo{corsa2.moverArriba()}
+	keyboard.g().onPressDo{corsa2.moverAbajo()}
+	keyboard.f().onPressDo{corsa2.moverALaIzquierda()}	
+	
+	keyboard.l().onPressDo{corsa2.moverALaDerecha()}
+	keyboard.i().onPressDo{corsa2.moverArriba()}
+	keyboard.k().onPressDo{corsa2.moverAbajo()}
+	keyboard.j().onPressDo{corsa2.moverALaIzquierda()}	
 	
 	keyboard.r().onPressDo{corsa.color(rojo)}
 	keyboard.a().onPressDo{corsa.color(azul)}
