@@ -7,26 +7,6 @@ class ChevroletCorsa {
 	var property position = game.origin()
 	var posicionesPorDondePasoElCorsa = []
 
-	// getObjectsIn(position) para devolver un objeto en una posicion
-	/* 
-	 * posible solucion para la pared : poner un mentodo que verifique si hay pared y despues modificar los metodos mover
-	 */
-	method moverALaDerecha() {
-		self.position(self.position().right(1))
-	}
-
-	method moverALaIzquierda() {
-		self.position(self.position().left(1))
-	}
-
-	method moverArriba() {
-		self.position(self.position().up(1))
-	}
-
-	method moverAbajo() {
-		self.position(self.position().down(1))
-	}
-
 	method image() {
 		return color.image()
 	}
@@ -48,8 +28,8 @@ class ChevroletCorsa {
 	}
 
 	/*me parecio una mejor solucion antes que crear un objeto del tipo posicion y pasarlo como parametro
-	 * sino otra forma que se me ocur
-	 */ 
+	 * 
+	 */
 	method position(a, b) {
 		position = game.at(a, b)
 		posicionesPorDondePasoElCorsa.add(new Position(x = a, y = b))
@@ -79,7 +59,38 @@ class ChevroletCorsa {
 	method recorrioFilas(lista_de_numeros) {
 		return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet().intersection(lista_de_numeros.asSet()) == lista_de_numeros.asSet()
 	// return self.pasoPorFila({=>lista_de_numeros})
-	// return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet() == (lista_de_numeros.asSet()) 
+	}
+
+	method moverALaDerecha() {
+		posicionesPorDondePasoElCorsa.add(self.position())
+		self.position(self.position().right(1))
+	}
+
+	method moverALaIzquierda() {
+		posicionesPorDondePasoElCorsa.add(self.position())
+		self.position(self.position().left(1))
+	}
+
+	method moverArriba() {
+		posicionesPorDondePasoElCorsa.add(self.position())
+		self.position(self.position().up(1))
+	}
+
+	method moverAbajo() {
+		posicionesPorDondePasoElCorsa.add(self.position())
+		self.position(self.position().down(1))
+	}
+
+	// tira error -1 en self.position(self.position(posicionesPorDondePasoElCorsa.last())
+	method chocar(pared) {
+		if (pared.noSePuedeAtravesar()) {
+			pared.reducirResistencia()
+			self.position(posicionesPorDondePasoElCorsa.last())
+			
+		} else {
+			game.removeVisual(pared)
+			
+		}
 	}
 
 }

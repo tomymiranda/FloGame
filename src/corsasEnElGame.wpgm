@@ -5,7 +5,7 @@ import pared.*
 program corsasEnElGame {
 	// hacer las inicializaciones necesarias 
 	
-	game.title("corsa cambia de color")
+	game.title("corsa")
 	
 	const corsa = new ChevroletCorsa(color = rojo)
 	const corsa2 = new ChevroletCorsa(color = azul)
@@ -49,6 +49,8 @@ program corsasEnElGame {
 	keyboard.r().onPressDo{corsa.color(rojo)}
 	keyboard.a().onPressDo{corsa.color(azul)}
 	keyboard.v().onPressDo{corsa.color(verde)}
+	
+	game.whenCollideDo(pared, autitoActivo.chocar(pared))
 	
 	
 	game.start()
