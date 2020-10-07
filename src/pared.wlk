@@ -6,10 +6,10 @@ class Pared {
 	var property position
 
 	method image() {
-		if (self.noSePuedeAtravesar()) {
+		if (self.resistencia() > 6) {
 			return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/pared.png"
 		} else {
-			return ""
+			return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/paredrota.png"
 		}
 	}
 	
