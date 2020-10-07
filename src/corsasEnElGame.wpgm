@@ -1,5 +1,6 @@
 import wollok.game.*
 import rodados.*
+import pared.*
 
 program corsasEnElGame {
 	// hacer las inicializaciones necesarias 
@@ -9,6 +10,9 @@ program corsasEnElGame {
 	const corsa = new ChevroletCorsa(color = rojo)
 	const corsa2 = new ChevroletCorsa(color = azul)
 	const corsa3 = new ChevroletCorsa(color = verde)
+	const pared = new Pared(position = new Position(x=3, y= 7))
+	const pared2 = new Pared(position = new Position(x = 4, y = 8))
+	const pared3 = new Pared(position = new Position(x = 6, y = 3))
 	
 	var autitoActivo = corsa
 	
@@ -19,8 +23,9 @@ program corsasEnElGame {
 	game.addVisual(corsa)
 	game.addVisual(corsa2)
 	game.addVisual(corsa3)
-	
-	
+	game.addVisual(pared)
+	game.addVisual(pared2)
+	game.addVisual(pared3)
 	
 	keyboard.num1().onPressDo{autitoActivo = corsa}
 	keyboard.num2().onPressDo{autitoActivo = corsa2}

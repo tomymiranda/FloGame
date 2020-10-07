@@ -295,55 +295,55 @@ test "la flota cultura no es grande" {
 
 test "cachito paso por la posicion 5,5" {
 	const cachito = new ChevroletCorsa(color = rojo)
-	cachito.nuevaPosicion(4, 2)
-	cachito.nuevaPosicion(5, 5)
-	cachito.nuevaPosicion(2, 7)
+	cachito.position(4, 2)
+	cachito.position(5, 5)
+	cachito.position(2, 7)
 	const p = new Position(x = 5, y = 5)
 	assert.that(cachito.pasoPor(p))
 }
 
 test "cachito paso por la fila 3" {
 	const cachito = new ChevroletCorsa(color = rojo)
-	cachito.nuevaPosicion(3, 5)
-	cachito.nuevaPosicion(3, 6)
-	cachito.nuevaPosicion(3, 7)
-	cachito.nuevaPosicion(4, 7)
+	cachito.position(3, 5)
+	cachito.position(3, 6)
+	cachito.position(3, 7)
+	cachito.position(4, 7)
 	assert.that(cachito.pasoPorFila(3))
 }
 
 test "cachito paso por la fila 4" {
 	const cachito = new ChevroletCorsa(color = rojo)
-	cachito.nuevaPosicion(3, 5)
-	cachito.nuevaPosicion(3, 6)
-	cachito.nuevaPosicion(3, 7)
-	cachito.nuevaPosicion(4, 7)
+	cachito.position(3, 5)
+	cachito.position(3, 6)
+	cachito.position(3, 7)
+	cachito.position(4, 7)
 	assert.that(cachito.pasoPorFila(4))
 }
 
 test "cachito paso por las filas 3, 4 y 5" {
 	const cachito = new ChevroletCorsa(color = rojo)
-	cachito.nuevaPosicion(3, 7)
-	cachito.nuevaPosicion(4, 7)
-	cachito.nuevaPosicion(5, 5)
+	cachito.position(3, 7)
+	cachito.position(4, 7)
+	cachito.position(5, 5)
 	assert.that(cachito.recorrioFilas([ 3, 4, 5 ]))
 }
 
 test "tira false porq cachito no paso por la fila 4"{
 	const cachito = new ChevroletCorsa(color = rojo)
-	cachito.nuevaPosicion(3, 7)
+	cachito.position(3, 7)
 	
-	cachito.nuevaPosicion(5, 5)
+	cachito.position(5, 5)
 	assert.notThat(cachito.recorrioFilas([ 3, 4, 5 ]))
 }
 
-test "pasa por todas por mas que pase por otras filas"{
+test "pasa por todas las filas por mas que pase por otras filas"{
 	const cachito = new ChevroletCorsa(color = rojo)
-	cachito.nuevaPosicion(3, 5)
-	cachito.nuevaPosicion(3, 6)
-	cachito.nuevaPosicion(3, 7)
-	cachito.nuevaPosicion(4, 7)
-	cachito.nuevaPosicion(5, 5)
-	cachito.nuevaPosicion(6, 4)
+	cachito.position(3, 5)
+	cachito.position(3, 6)
+	cachito.position(3, 7)
+	cachito.position(4, 7)
+	cachito.position(5, 5)
+	cachito.position(6, 4)
 	
 	assert.that(cachito.recorrioFilas([ 3, 4, 5 ]))
 }

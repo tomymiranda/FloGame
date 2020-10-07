@@ -4,23 +4,33 @@ import pared.*
 class ChevroletCorsa {
 
 	var property color
-	var position = game.origin()
+	var property position = game.origin()
 	var posicionesPorDondePasoElCorsa = []
 
 	// getObjectsIn(position) para devolver un objeto en una posicion
 	/* 
 	 * posible solucion para la pared : poner un mentodo que verifique si hay pared y despues modificar los metodos mover
 	 */
-	
-	method moverALaDerecha(){self.nuevaPosicion(position.x()+1,position.y())}
-	method moverALaIzquierda(){self.nuevaPosicion(position.x()-1,position.y())}
-	method moverArriba(){self.nuevaPosicion(position.x(),position.y()+1)}
-	method moverAbajo(){self.nuevaPosicion(position.x(),position.y()-1)}
-	
-	method image(){
+	method moverALaDerecha() {
+		self.position(self.position().right(1))
+	}
+
+	method moverALaIzquierda() {
+		self.position(self.position().left(1))
+	}
+
+	method moverArriba() {
+		self.position(self.position().up(1))
+	}
+
+	method moverAbajo() {
+		self.position(self.position().down(1))
+	}
+
+	method image() {
 		return color.image()
 	}
-	
+
 	method capacidadPasajero() {
 		return 4
 	}
@@ -37,8 +47,10 @@ class ChevroletCorsa {
 		return position
 	}
 
-	// no sabia como pasar una posicion sin plantear como x e y
-	method nuevaPosicion(a, b) {
+	/*me parecio una mejor solucion antes que crear un objeto del tipo posicion y pasarlo como parametro
+	 * sino otra forma que se me ocur
+	 */ 
+	method position(a, b) {
 		position = game.at(a, b)
 		posicionesPorDondePasoElCorsa.add(new Position(x = a, y = b))
 	}
@@ -65,9 +77,9 @@ class ChevroletCorsa {
 
 	// no me salio usando el self.pasoPorFila o si se podia no supe hacerlo
 	method recorrioFilas(lista_de_numeros) {
-		return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet().intersection(lista_de_numeros.asSet()) == lista_de_numeros.asSet()   
-		//return self.pasoPorFila({=>lista_de_numeros})
-		//return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet() == (lista_de_numeros.asSet()) 
+		return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet().intersection(lista_de_numeros.asSet()) == lista_de_numeros.asSet()
+	// return self.pasoPorFila({=>lista_de_numeros})
+	// return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet() == (lista_de_numeros.asSet()) 
 	}
 
 }
@@ -187,11 +199,19 @@ object motorBataton {
 }
 
 object rojo {
-	method image(){return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitorojo.png"}
+
+	method image() {
+		return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitorojo.png"
+	}
+
 }
 
 object azul {
-	method image(){return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitoazul.jpg"}
+
+	method image() {
+		return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitoazul.jpg"
+	}
+
 }
 
 object blanco {
@@ -203,7 +223,11 @@ object negro {
 }
 
 object verde {
-	method image(){return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitoverde.jpg"}
+
+	method image() {
+		return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/autitoverde.jpg"
+	}
+
 }
 
 object beige {
