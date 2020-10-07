@@ -1,4 +1,5 @@
 import wollok.game.*
+import rodados.*
 
 class Pared {
 
@@ -12,13 +13,13 @@ class Pared {
 			return "C:/Users/Usuario/Desktop/Unahur/PO1/git/FloGame/assets/paredrota.png"
 		}
 	}
-	
-	method noSePuedeAtravesar(){
+
+	method noSePuedeAtravesar() {
 		return self.resistencia() > 0
 	}
 
-	method reducirResistencia(){
-		self.resistencia((self.resistencia()-1).max(0))
-	}
+	method reducirResistencia() {
+		self.resistencia((self.resistencia() - 1).max(0))
+	}	
 }
 

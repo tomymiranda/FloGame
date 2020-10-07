@@ -50,8 +50,7 @@ program corsasEnElGame {
 	keyboard.a().onPressDo{corsa.color(azul)}
 	keyboard.v().onPressDo{corsa.color(verde)}
 	
-	game.whenCollideDo(pared, autitoActivo.chocar(pared))
-	
+	//game.whenCollideDo(autitoActivo,{pared1=>autitoActivo.chocar(pared1)})
 	
 	game.start()
 }
