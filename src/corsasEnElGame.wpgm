@@ -14,8 +14,13 @@ program corsasEnElGame {
 	const pared2 = new Pared(position = new Position(x = 4, y = 8))
 	const pared3 = new Pared(position = new Position(x = 6, y = 3))
 	
-	var autitoActivo = corsa
+	const listaCorsa = []
+	listaCorsa.add(corsa)
+	listaCorsa.add(corsa2)
+	listaCorsa.add(corsa3)
 	
+	var autitoActivo = corsa
+	var usamosATodos = false
 	
 	game.height(10)
 	game.width(10)
@@ -30,21 +35,15 @@ program corsasEnElGame {
 	keyboard.num1().onPressDo{autitoActivo = corsa}
 	keyboard.num2().onPressDo{autitoActivo = corsa2}
 	keyboard.num3().onPressDo{autitoActivo = corsa3}
+	keyboard.num4().onPressDo{usamosATodos = not usamosATodos}
 	
-	keyboard.right().onPressDo{autitoActivo.moverALaDerecha()}
-	keyboard.up().onPressDo{autitoActivo.moverArriba()}
-	keyboard.down().onPressDo{autitoActivo.moverAbajo()}
-	keyboard.left().onPressDo{autitoActivo.moverALaIzquierda()}	
+	keyboard.right().onPressDo{if(not usamosATodos ){autitoActivo.moverALaDerecha()}else{listaCorsa.forEach({c => c.moverALaDerecha()})}}
 	
-	keyboard.h().onPressDo{corsa2.moverALaDerecha()}
-	keyboard.t().onPressDo{corsa2.moverArriba()}
-	keyboard.g().onPressDo{corsa2.moverAbajo()}
-	keyboard.f().onPressDo{corsa2.moverALaIzquierda()}	
+	keyboard.up().onPressDo{if(not usamosATodos){autitoActivo.moverArriba()}else{listaCorsa.forEach({c => c.moverArriba()})}}
 	
-	keyboard.l().onPressDo{corsa2.moverALaDerecha()}
-	keyboard.i().onPressDo{corsa2.moverArriba()}
-	keyboard.k().onPressDo{corsa2.moverAbajo()}
-	keyboard.j().onPressDo{corsa2.moverALaIzquierda()}	
+	keyboard.down().onPressDo{if(not usamosATodos ){autitoActivo.moverAbajo()}else{listaCorsa.forEach({c => c.moverAbajo()})}}
+	
+	keyboard.left().onPressDo{if(not usamosATodos ){autitoActivo.moverALaIzquierda()}else{listaCorsa.forEach({c => c.moverALaIzquierda()})}}
 	
 	keyboard.r().onPressDo{corsa.color(rojo)}
 	keyboard.a().onPressDo{corsa.color(azul)}
