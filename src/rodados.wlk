@@ -7,7 +7,6 @@ class ChevroletCorsa {
 	var property position = game.origin()
 	var posicionesPorDondePasoElCorsa = []
 
-
 	method image() {
 		return color.image()
 	}
@@ -56,57 +55,39 @@ class ChevroletCorsa {
 		return posicionesPorDondePasoElCorsa.map({ c => c.x() }).contains(numero)
 	}
 
-	// no me salio usando el self.pasoPorFila o si se podia no supe hacerlo
 	method recorrioFilas(lista_de_numeros) {
 		return posicionesPorDondePasoElCorsa.map({ c => c.x() }).asSet().intersection(lista_de_numeros.asSet()) == lista_de_numeros.asSet()
-	// return self.pasoPorFila({=>lista_de_numeros})
+	}
+
+	// solucion posible usando el metodo pasoPorFilas(numero)
+	method recorriFilas2(lista_de_numeros) {
+		return lista_de_numeros.all({ numero => self.pasoPorFila(numero) })
 	}
 
 	method moverALaDerecha() {
-		
 		posicionesPorDondePasoElCorsa.add(self.position())
 		self.position(self.position().right(1))
 	}
 
 	method moverALaIzquierda() {
-		
 		posicionesPorDondePasoElCorsa.add(self.position())
 		self.position(self.position().left(1))
 	}
 
 	method moverArriba() {
-		
 		posicionesPorDondePasoElCorsa.add(self.position())
 		self.position(self.position().up(1))
 	}
 
 	method moverAbajo() {
-		
 		posicionesPorDondePasoElCorsa.add(self.position())
 		self.position(self.position().down(1))
 	}
-	
-	method volverALaPosicionAnterior(){
+
+	method volverALaPosicionAnterior() {
 		self.position(posicionesPorDondePasoElCorsa.last())
 	}
 
-	
-	/* 
-	no anda:
-	* tira que corsa no entiende el metodo noSePuedeAtravesar() cuando el que trabaja con eso es pared
-	* self.volverAlaPosicionAnterior() tira un error de -1
-	
-	method chocar(pared) {
-		if (pared. noSePuedeAtravesar()) {
-			pared.reducirResistencia()
-			self.volverALaPosicionAnterior()
-		} else {
-			game.removeVisual(pared)
-			
-		}
-	}
-	*/
-	
 }
 
 class RenaultKwid {

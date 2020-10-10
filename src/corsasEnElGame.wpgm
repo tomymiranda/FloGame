@@ -4,17 +4,16 @@ import pared.*
 
 program corsasEnElGame {
 	// hacer las inicializaciones necesarias 
-	
 	game.title("corsa")
 	
 	const corsa = new ChevroletCorsa(color = rojo)
 	const corsa2 = new ChevroletCorsa(color = azul)
 	const corsa3 = new ChevroletCorsa(color = verde)
-	const pared = new Pared(position = new Position(x=3, y= 7))
+	const pared = new Pared(position = new Position(x = 3, y = 7))
 	const pared2 = new Pared(position = new Position(x = 4, y = 8))
 	const pared3 = new Pared(position = new Position(x = 6, y = 3))
-	
 	const listaCorsa = []
+	
 	listaCorsa.add(corsa)
 	listaCorsa.add(corsa2)
 	listaCorsa.add(corsa3)
@@ -32,24 +31,87 @@ program corsasEnElGame {
 	game.addVisual(pared2)
 	game.addVisual(pared3)
 	
-	keyboard.num1().onPressDo{autitoActivo = corsa}
-	keyboard.num2().onPressDo{autitoActivo = corsa2}
-	keyboard.num3().onPressDo{autitoActivo = corsa3}
-	keyboard.num4().onPressDo{usamosATodos = not usamosATodos}
+	keyboard.num1().onPressDo{ autitoActivo = corsa
+	; game.say(autitoActivo, "se mueve el corsa 1")
+	}
 	
-	keyboard.right().onPressDo{if(not usamosATodos ){autitoActivo.moverALaDerecha()}else{listaCorsa.forEach({c => c.moverALaDerecha()})}}
+	keyboard.num2().onPressDo{ autitoActivo = corsa2
+	;game.say(autitoActivo, "se mueve el corsa 2")
+	}
 	
-	keyboard.up().onPressDo{if(not usamosATodos){autitoActivo.moverArriba()}else{listaCorsa.forEach({c => c.moverArriba()})}}
+	keyboard.num3().onPressDo{ autitoActivo = corsa3
+	;game.say(autitoActivo, "se mueve el corsa 3")
+	}
 	
-	keyboard.down().onPressDo{if(not usamosATodos ){autitoActivo.moverAbajo()}else{listaCorsa.forEach({c => c.moverAbajo()})}}
+	keyboard.num4().onPressDo{ usamosATodos = not usamosATodos }
 	
-	keyboard.left().onPressDo{if(not usamosATodos ){autitoActivo.moverALaIzquierda()}else{listaCorsa.forEach({c => c.moverALaIzquierda()})}}
+	keyboard.right().onPressDo{ if (not usamosATodos) {
+			autitoActivo.moverALaDerecha()
+		} else {
+			listaCorsa.forEach({ c => c.moverALaDerecha()})
+		};game.whenCollideDo(autitoActivo, { paredEncontrada =>
+		if (paredEncontrada.noSePuedeAtravesar()) {
+			paredEncontrada.reducirResistencia()
+			autitoActivo.volverALaPosicionAnterior()
+		}else{
+			game.removeVisual(paredEncontrada)
+		}
+	})
+	}
 	
-	keyboard.r().onPressDo{corsa.color(rojo)}
-	keyboard.a().onPressDo{corsa.color(azul)}
-	keyboard.v().onPressDo{corsa.color(verde)}
+	keyboard.up().onPressDo{ if (not usamosATodos) {
+			autitoActivo.moverArriba()
+		} else {
+			listaCorsa.forEach({ c => c.moverArriba()})
+		};game.whenCollideDo(autitoActivo, { paredEncontrada =>
+		if (paredEncontrada.noSePuedeAtravesar()) {
+			paredEncontrada.reducirResistencia()
+			autitoActivo.volverALaPosicionAnterior()
+		}else{
+			game.removeVisual(paredEncontrada)
+		}
+	})
+	}
 	
-	//game.whenCollideDo(autitoActivo,{pared1=>autitoActivo.chocar(pared1)})
+	keyboard.down().onPressDo{ if (not usamosATodos) {
+			autitoActivo.moverAbajo()
+		} else {
+			listaCorsa.forEach({ c => c.moverAbajo()})
+		};game.whenCollideDo(autitoActivo, { paredEncontrada =>
+		if (paredEncontrada.noSePuedeAtravesar()) {
+			paredEncontrada.reducirResistencia()
+			autitoActivo.volverALaPosicionAnterior()
+		}else{
+			game.removeVisual(paredEncontrada)
+		}
+	})
+	}
+	
+	keyboard.left().onPressDo{ if (not usamosATodos) {
+			autitoActivo.moverALaIzquierda()
+		} else {
+			listaCorsa.forEach({ c => c.moverALaIzquierda()})
+		};game.whenCollideDo(autitoActivo, { paredEncontrada =>
+		if (paredEncontrada.noSePuedeAtravesar()) {
+			paredEncontrada.reducirResistencia()
+			autitoActivo.volverALaPosicionAnterior()
+		}else{
+			game.removeVisual(paredEncontrada)
+		}
+	})
+	}
+	
+	keyboard.r().onPressDo{ autitoActivo.color(rojo)
+	; game.say(autitoActivo, " cambie de color a rojo")
+	}
+	
+	keyboard.a().onPressDo{ autitoActivo.color(azul)
+	;game.say(autitoActivo, " cambie de color a azul")
+	}
+	
+	keyboard.v().onPressDo{ autitoActivo.color(verde)
+	;game.say(autitoActivo, " cambie de color a verde")
+	}
 	
 	game.start()
 }

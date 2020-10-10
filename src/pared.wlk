@@ -21,5 +21,7 @@ class Pared {
 	method reducirResistencia() {
 		self.resistencia((self.resistencia() - 1).max(0))
 	}	
+
+	
 }
 
