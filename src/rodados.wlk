@@ -27,8 +27,8 @@ class ChevroletCorsa {
 		return position
 	}
 
-	/*me parecio una mejor solucion antes que crear un objeto del tipo posicion y pasarlo como parametro
-	 * 
+	/*
+	 *si se quiere cambiar totalmente la posicion de una
 	 */
 	method position(a, b) {
 		position = game.at(a, b)

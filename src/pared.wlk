@@ -22,6 +22,12 @@ class Pared {
 		self.resistencia((self.resistencia() - 1).max(0))
 	}	
 
-	
+	method impacto(){
+		if(self.noSePuedeAtravesar()){
+			self.reducirResistencia()
+		}else{
+			game.removeVisual(self)
+		}
+	}
 }
 
