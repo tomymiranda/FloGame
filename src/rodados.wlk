@@ -23,10 +23,6 @@ class ChevroletCorsa {
 		return 1300
 	}
 
-	method position() {
-		return position
-	}
-
 	/*
 	 *si se quiere cambiar totalmente la posicion de una
 	 */
@@ -65,23 +61,26 @@ class ChevroletCorsa {
 	}
 
 	method moverALaDerecha() {
-		posicionesPorDondePasoElCorsa.add(self.position())
+		
 		self.position(self.position().right(1))
+		posicionesPorDondePasoElCorsa.add(self.position())
 	}
 
 	method moverALaIzquierda() {
-		posicionesPorDondePasoElCorsa.add(self.position())
+		
 		self.position(self.position().left(1))
+		posicionesPorDondePasoElCorsa.add(self.position())
 	}
 
 	method moverArriba() {
-		posicionesPorDondePasoElCorsa.add(self.position())
+		
 		self.position(self.position().up(1))
+		posicionesPorDondePasoElCorsa.add(self.position())
 	}
 
 	method moverAbajo() {
-		posicionesPorDondePasoElCorsa.add(self.position())
 		self.position(self.position().down(1))
+		posicionesPorDondePasoElCorsa.add(self.position())
 	}
 
 	method volverALaPosicionAnterior() {
